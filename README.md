@@ -28,7 +28,7 @@ MMCV 2.1.0 is patched from C++17 to C++20 for the validated PyTorch 2.12 extensi
 
 The ROCm development package is installed explicitly to provide the development headers and libraries required by the MMCV build, including rocThrust and `libamdhip64`.
 
-Python dependencies are explicitly pinned and installed without transitive dependency resolution. This prevents MMEngine from installing the GUI `opencv-python` package alongside `opencv-python-headless`, so the container has a single OpenCV provider suitable for headless GPU workloads.
+Runtime dependencies are explicitly pinned, and MMEngine is built after `opencv-python-headless` is installed so its package metadata selects the headless OpenCV variant. The final container therefore has a single OpenCV provider suitable for headless GPU workloads.
 
 ## Build
 
